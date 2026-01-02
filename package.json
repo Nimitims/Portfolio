@@ -55,7 +55,7 @@
     },
     "scripts": {
         "dev": "vite",
-        "build": "npx vite build",
+        "build": "node node_modules/vite/bin/vite.js build",
         "test:build": "node scripts/test-build.js",
         "test:build:full": "node scripts/test-build-full.js",
         "verify": "npm run test:build && npm run build"
