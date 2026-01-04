@@ -32,7 +32,7 @@ function SectionNav() {
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); 
+    handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -46,8 +46,8 @@ function SectionNav() {
 
   return (
     <div className="content-stretch flex flex-col font-['Inter:Medium',sans-serif] font-medium gap-[8px] items-start leading-[normal] not-italic relative shrink-0 text-[18px] w-[96px]">
-      <Link 
-        to="/" 
+      <Link
+        to="/"
         className="relative shrink-0 text-[#5c5c5c] w-full no-underline hover:text-[#171717] transition-colors duration-150"
       >
         Back
@@ -111,7 +111,7 @@ function EmailText() {
 
   const handleCopy = () => {
     const email = 'oloyedeoluwalonimi@gmail.com';
-    
+
     const textarea = document.createElement('textarea');
     textarea.value = email;
     textarea.style.position = 'fixed';
@@ -120,22 +120,22 @@ function EmailText() {
     document.body.appendChild(textarea);
     textarea.focus();
     textarea.select();
-    
+
     try {
       document.execCommand('copy');
     } catch (err) {
       // Silent fail
     }
-    
+
     textarea.remove();
-    
+
     setIsCopied(true);
     setTimeout(() => setIsCopied(false), 1000);
   };
 
   return (
-    <div 
-      className="content-stretch flex gap-[6px] items-center relative shrink-0 w-fit cursor-pointer select-none" 
+    <div
+      className="content-stretch flex gap-[6px] items-center relative shrink-0 w-fit cursor-pointer select-none"
       data-name="Email_text"
       onClick={handleCopy}
       onMouseEnter={() => setIsHovered(true)}
@@ -144,7 +144,7 @@ function EmailText() {
       tabIndex={0}
       aria-live="polite"
     >
-      <div 
+      <div
         className="relative inline-block"
         style={{
           width: '247px',
@@ -157,7 +157,7 @@ function EmailText() {
             color: isHovered ? '#171717' : '#a4a7ae',
             opacity: isCopied ? 0 : 1,
             filter: isCopied ? 'blur(2px)' : 'blur(0px)',
-            transition: isCopied 
+            transition: isCopied
               ? 'opacity 180ms ease-in-out, filter 180ms ease-in-out, color 120ms ease'
               : 'opacity 200ms ease-out, filter 200ms ease-out, color 120ms ease',
             willChange: 'opacity, filter, transform'
@@ -173,7 +173,7 @@ function EmailText() {
             filter: isCopied ? 'blur(0px)' : 'blur(4px)',
             transform: isCopied ? 'scale(1)' : 'scale(0.99)',
             transformOrigin: 'left center',
-            transition: isCopied 
+            transition: isCopied
               ? 'opacity 200ms ease-out, filter 200ms ease-out, transform 200ms ease-out, color 120ms ease'
               : 'opacity 180ms ease-in-out, filter 180ms ease-in-out, transform 180ms ease-in-out, color 120ms ease',
             willChange: 'opacity, filter, transform'
@@ -528,7 +528,7 @@ function Frame8() {
 
 function Frame9() {
   return (
-    <div className="absolute content-stretch flex items-start gap-[134px] left-[136px] top-[96px]">
+    <div className="relative content-stretch flex items-start gap-[134px]">
       <SectionNav />
       <Frame8 />
     </div>
@@ -537,7 +537,7 @@ function Frame9() {
 
 export function DomeDetailPage() {
   return (
-    <div className="bg-white relative size-full overflow-y-auto" data-name="Product">
+    <div className="bg-white relative w-full min-h-screen overflow-y-auto" data-name="Product">
       <Frame9 />
     </div>
   );

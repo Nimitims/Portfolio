@@ -5,6 +5,7 @@ import { ColophonPage } from './components/ColophonPage';
 import { DomeDetailPage } from './components/DomeDetailPage';
 import { ArchiveDetailPage } from './components/ArchiveDetailPage';
 import { LibrasDetailPage } from './components/LibrasDetailPage';
+import { NotFoundPage } from './components/NotFoundPage';
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
         <Route path="/dome" element={<DomeDetailPage />} />
         <Route path="/archive" element={<ArchiveDetailPage />} />
         <Route path="/libras" element={<LibrasDetailPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   );

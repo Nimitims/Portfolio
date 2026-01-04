@@ -15,36 +15,37 @@ import imgLibrasLaptop from "figma:asset/10c9d4fa9a5d364fabef44a489a2b5921e0cf4c
 import imgTheLibras from "figma:asset/83350641223abc3f2b826b1889f582e0fd2ae09f.png";
 import { DraggableHeartToy } from './DraggableHeartToy';
 
+
 function NigeriaTimeDisplay() {
   const [time, setTime] = useState('');
 
   useEffect(() => {
     const updateTime = () => {
-      
+
       const now = new Date();
       const nigeriaTime = new Date(now.toLocaleString('en-US', { timeZone: 'Africa/Lagos' }));
-      
+
       let hours = nigeriaTime.getHours();
       const minutes = nigeriaTime.getMinutes();
       const seconds = nigeriaTime.getSeconds();
       const ampm = hours >= 12 ? 'PM' : 'AM';
-      
-      
+
+
       hours = hours % 12;
-      hours = hours ? hours : 12; 
-      
-      
+      hours = hours ? hours : 12;
+
+
       const formattedTime = `${hours}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')} ${ampm}`;
       setTime(formattedTime);
     };
 
-    
+
     updateTime();
 
-    
+
     const interval = setInterval(updateTime, 1000);
 
-    
+
     return () => clearInterval(interval);
   }, []);
 
@@ -54,7 +55,7 @@ function NigeriaTimeDisplay() {
 function ProfileImage() {
   return (
     <div className="relative shrink-0 size-[64px]" data-name="Profile_image">
-      <img 
+      <img
         src={image_10d916d565aa1f86e9df63e404d9402972220085}
         alt="Profile"
         className="absolute inset-0 w-full h-full object-cover rounded-full"
@@ -100,7 +101,7 @@ function EmailText() {
 
   const handleCopy = () => {
     const email = 'oloyedeoluwalonimi@gmail.com';
-    
+
     // Use fallback method that works without Clipboard API
     const textarea = document.createElement('textarea');
     textarea.value = email;
@@ -110,22 +111,22 @@ function EmailText() {
     document.body.appendChild(textarea);
     textarea.focus();
     textarea.select();
-    
+
     try {
       document.execCommand('copy');
     } catch (err) {
-      
+
     }
-    
+
     textarea.remove();
-    
+
     setIsCopied(true);
     setTimeout(() => setIsCopied(false), 1000);
   };
 
   return (
-    <div 
-      className="content-stretch flex gap-[-6px] items-center relative shrink-0 w-fit cursor-pointer select-none" 
+    <div
+      className="content-stretch flex gap-[-6px] items-center relative shrink-0 w-fit cursor-pointer select-none"
       data-name="Email_text"
       onClick={handleCopy}
       onMouseEnter={() => setIsHovered(true)}
@@ -134,7 +135,7 @@ function EmailText() {
       tabIndex={0}
       aria-live="polite"
     >
-      <div 
+      <div
         className="relative inline-block"
         style={{
           width: '234px',
@@ -147,7 +148,7 @@ function EmailText() {
             color: isHovered ? '#171717' : '#a4a7ae',
             opacity: isCopied ? 0 : 1,
             filter: isCopied ? 'blur(2px)' : 'blur(0px)',
-            transition: isCopied 
+            transition: isCopied
               ? 'opacity 180ms ease-in-out, filter 180ms ease-in-out, color 120ms ease'
               : 'opacity 200ms ease-out, filter 200ms ease-out, color 120ms ease',
             willChange: 'opacity, filter, transform'
@@ -163,7 +164,7 @@ function EmailText() {
             filter: isCopied ? 'blur(0px)' : 'blur(4px)',
             transform: isCopied ? 'scale(1)' : 'scale(0.99)',
             transformOrigin: 'left center',
-            transition: isCopied 
+            transition: isCopied
               ? 'opacity 200ms ease-out, filter 200ms ease-out, transform 200ms ease-out, color 120ms ease'
               : 'opacity 180ms ease-in-out, filter 180ms ease-in-out, transform 180ms ease-in-out, color 120ms ease',
             willChange: 'opacity, filter, transform'
@@ -214,7 +215,7 @@ function Heading() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsTransitioning(true);
-      
+
       setTimeout(() => {
         setCurrentIndex((prevIndex) => {
           const nextIndex = (prevIndex + 1) % greetings.length;
@@ -229,7 +230,7 @@ function Heading() {
 
   return (
     <div className="content-stretch flex flex-col gap-[9px] items-start not-italic relative shrink-0 w-full" data-name="Heading">
-      <p 
+      <p
         className="font-['Tienne:Regular',sans-serif] leading-[normal] relative shrink-0 text-[48px] text-black w-full transition-opacity duration-[250ms] ease-in-out"
         style={{ opacity: isTransitioning ? 0 : 1 }}
       >
@@ -243,7 +244,7 @@ function Heading() {
 
 function DomeCard() {
   return (
-    <Link to="/dome" className="content-stretch flex flex-col gap-[12px] items-start relative shrink-0 w-[480px] no-underline cursor-pointer group">
+    <Link to="/Dome" className="content-stretch flex flex-col gap-[12px] items-start relative shrink-0 w-[480px] no-underline cursor-pointer group">
       <div className="bg-[#E8C4C4] h-[273px] overflow-clip relative shrink-0 w-full rounded-[4px] transition-opacity duration-200 group-hover:opacity-90" data-name="Big display">
         <div className="absolute size-full">
           <img alt="Dome product showcase" className="absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[calc(-50%+119px)] w-[196px] h-auto object-contain rounded-[20px]" src={image_af91b04069cf8bfa11989f7b366a9f6b7da5336b} />
@@ -257,10 +258,10 @@ function DomeCard() {
   );
 }
 
-// Work Card 2: Archive - Design Engineering
+
 function ArchiveCard() {
   return (
-    <Link to="/archive" className="content-stretch flex flex-col gap-[12px] items-start relative shrink-0 w-[480px] no-underline cursor-pointer group">
+    <Link to="/Archive" className="content-stretch flex flex-col gap-[12px] items-start relative shrink-0 w-[480px] no-underline cursor-pointer group">
       <div className="bg-[#C5B8E0] h-[273px] overflow-clip relative shrink-0 w-full rounded-[4px] flex items-center justify-center transition-opacity duration-200 group-hover:opacity-90">
         <img alt="Archive laptop view" className="w-auto h-[200px] object-contain" src={image_61c9cc9134abe23670e9f686cabcd702fe1d4a9d} />
       </div>
@@ -272,10 +273,10 @@ function ArchiveCard() {
   );
 }
 
-// Work Card 3: Libras - Design Engineering
+
 function LibrasCard() {
   return (
-    <Link to="/libras" className="content-stretch flex flex-col gap-[12px] items-start relative shrink-0 w-[480px] no-underline cursor-pointer group">
+    <Link to="/Libras" className="content-stretch flex flex-col gap-[12px] items-start relative shrink-0 w-[480px] no-underline cursor-pointer group">
       <div className="bg-[#C5B8E0] h-[273px] overflow-clip relative shrink-0 w-full rounded-[4px] flex items-center justify-center transition-opacity duration-200 group-hover:opacity-90">
         <img alt="Libras laptop view" className="w-auto h-[200px] object-contain" src={imgLibrasLaptop} />
       </div>
@@ -287,7 +288,7 @@ function LibrasCard() {
   );
 }
 
-// Work grid rows
+
 function WorkRow1() {
   return (
     <div className="content-stretch flex gap-[16px] items-center relative shrink-0 w-full">
@@ -324,12 +325,12 @@ function All() {
   );
 }
 
-// Instagram icon - Links to Instagram profile
+
 function SocialIcons() {
   return (
-    <a 
-      href="https://www.instagram.com/nimitims/" 
-      target="_blank" 
+    <a
+      href="https://www.instagram.com/nimitims/"
+      target="_blank"
       rel="noopener noreferrer"
       aria-label="Instagram profile"
       className="relative shrink-0 size-[20px] cursor-pointer transition-opacity hover:opacity-70"
@@ -347,9 +348,9 @@ function SocialIcons() {
 // X (Twitter) icon - Links to X profile
 function SocialIcons1() {
   return (
-    <a 
-      href="https://x.com/Nimitimis" 
-      target="_blank" 
+    <a
+      href="https://x.com/Nimitimis"
+      target="_blank"
       rel="noopener noreferrer"
       aria-label="X profile"
       className="relative shrink-0 size-[20px] cursor-pointer transition-opacity hover:opacity-70"
@@ -374,9 +375,9 @@ function SocialIcons1() {
 // LinkedIn icon - Links to LinkedIn profile
 function SocialIcons2() {
   return (
-    <a 
-      href="https://www.linkedin.com/in/oloyede-oluwalonimi-2a1088252/" 
-      target="_blank" 
+    <a
+      href="https://www.linkedin.com/in/oloyede-oluwalonimi-2a1088252/"
+      target="_blank"
       rel="noopener noreferrer"
       aria-label="LinkedIn profile"
       className="relative shrink-0 size-[20px] cursor-pointer transition-opacity hover:opacity-70"
